@@ -1,10 +1,15 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/connectDB');
+const router = require('./routes/auth.routes');
 
 const app = express();
-
 dotenv.config();
+
+app.use(express.json());
+
+//auth routes 
+app.use("/api/auth", router);
 
 connectDB()
   .then(() => {
@@ -16,3 +21,4 @@ connectDB()
   .catch((err) => {
     console.error("DB connection rejected...!", err);
   });
+  
