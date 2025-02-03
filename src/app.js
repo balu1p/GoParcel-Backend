@@ -2,11 +2,12 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/connectDB');
 const router = require('./routes/auth.routes');
-const path = require('path');
+const cookieParser = require("cookie-parser");
 
 const app = express();
 dotenv.config();
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.static('public'));
 //auth routes 
